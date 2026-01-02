@@ -22,6 +22,21 @@
 
 ## Recent Updates (2026-01-02)
 
+**Documentation System Setup:**
+- ✅ **Claude.md Pattern** - Set up comprehensive AI assistance documentation
+  - Created [claude.md](claude.md) with project overview
+  - Added [.claude/RETROSPECTIVE-PROCESS.md](.claude/RETROSPECTIVE-PROCESS.md)
+  - Created retrospective templates and SESSION-SUMMARY structure
+- ✅ **Content Manager Skill** - Built skill system for content management
+  - Created [.claude/skills/content-manager/SKILL.md](.claude/skills/content-manager/SKILL.md)
+  - 6 reference docs: templates, frontmatter, organization, linking, tagging, quality
+  - Supports: Evergreen notes, Blog posts, Projects, Profile
+  - Draft/publish workflow and quality validation
+- ✅ **Enhanced claude.md** - Added practical sections
+  - Performance & Context Management guidelines
+  - Skills System explanation and usage
+  - Quick Start for New Sessions workflows
+
 **Initial Content Setup:**
 - ✅ **Folder Rename** - Renamed `contentlink/` to `content/` using `git mv`
   - Fixed Quartz content directory structure
@@ -36,7 +51,9 @@
   - [content/example-note.md](content/example-note.md) - Example with wiki-links
 - ✅ **Deployment** - Pushed to GitHub, site now shows content instead of RSS feed
 
-**Files Modified:**
+**Files Modified Today:**
+- [claude.md](claude.md) - Added Skills System, Performance, Quick Start sections
+- [.claude/skills/content-manager/](. claude/skills/content-manager/) - Complete skill with 6 reference docs
 - [content/index.md](content/index.md) - Homepage with digital garden introduction
 - [content/about.md](content/about.md) - Site information and tech stack
 - [content/getting-started.md](content/getting-started.md) - How to use Quartz
@@ -148,6 +165,150 @@ date: 2026-01-02
 **Component Files:**
 - PascalCase: `Header.tsx`, `Graph.tsx`
 - Match component name to filename
+
+---
+
+## Performance & Context Management
+
+### Session Hygiene
+- Use `/clear` between unrelated tasks to reset context
+- Keep sessions focused on one feature/area at a time
+- For multi-file refactors, work in steps rather than one giant request
+- Close completed tasks before starting new ones
+
+### Working with Large Repos
+- Use `@folder` references for specific areas: `@folder content/notes/`
+- Prefer targeted file references over reading entire directories
+- When editing multiple content files, batch by category (e.g., all blog posts, then all evergreen notes)
+- Avoid reading entire folder trees unless necessary
+
+### Memory Management
+- Close VS Code windows when done with the project
+- Restart Claude Code extension if you see multiple `claude.exe` processes
+- Keep active chats under 70-75% of context window before clearing
+- Clear context between different work types (content creation vs config changes)
+
+### Tool Usage
+- Prefer specialized tools (Read, Edit, Write) over bash commands for file operations
+- Use Glob for finding files by pattern
+- Use Grep for searching content
+- Use Bash only for git, npm, and system commands
+
+---
+
+## Skills System
+
+### What are Skills?
+
+Skills are specialized guides for Claude Code that contain:
+- Opinionated workflows and templates
+- Validation rules and quality standards
+- Domain-specific best practices
+- Automated pattern enforcement
+
+### Available Skills
+
+#### content-manager
+**Location:** [.claude/skills/content-manager/](.claude/skills/content-manager/)
+
+**Purpose:** Enforces consistent content creation patterns for the public digital garden
+
+**Key Features:**
+- Content type templates (Evergreen, Blog, Projects, Profile)
+- Frontmatter validation (draft/publish semantics)
+- Tagging taxonomy enforcement (type/*, topic/*)
+- Wiki-link strategy for cross-references
+- Quality checklist before publishing
+
+**When to Use:**
+- Creating any new public content
+- Updating existing pages while maintaining standards
+- Validating frontmatter before publishing
+- Organizing and linking content
+
+**Invocation Examples:**
+- "Create a new evergreen note about knowledge management"
+- "Update the blog post about Quartz to add related links"
+- "Validate frontmatter across all content files"
+- "Create a project page for this digital garden"
+
+**Documentation:** See [SKILL.md](.claude/skills/content-manager/SKILL.md)
+
+### When to Use Skills vs. claude.md
+
+**claude.md (This file):**
+- High-level project context
+- Build commands and deployment
+- Technical architecture
+- General conventions
+
+**Skills:**
+- Specific workflows with templates
+- Validation and quality rules
+- Domain-specific patterns
+- Repeatable processes
+
+---
+
+## Quick Start for New Sessions
+
+### For Content Work
+
+1. **Get context:**
+   - Review [.claude/SESSION-SUMMARY.md](.claude/SESSION-SUMMARY.md) for current focus
+   - Check recent commits: `git log --oneline -n 5`
+
+2. **Create/edit content:**
+   - Invoke content-manager skill for structured content
+   - Follow templates and frontmatter standards
+   - Add wiki-links and proper tags
+
+3. **Test locally:**
+   ```bash
+   npx quartz build --serve
+   ```
+   - Preview at http://localhost:8080
+   - Verify links and formatting
+
+4. **Track progress:**
+   - Update [.claude/SESSION-SUMMARY.md](.claude/SESSION-SUMMARY.md) with what you did
+   - Note any blockers or questions
+
+5. **Commit and deploy:**
+   - Commit with descriptive message
+   - Push to trigger deployment
+
+### For Config/Feature Work
+
+1. **Check current state:**
+   - Current branch: `v4`
+   - Review recent commits for context
+
+2. **Make changes:**
+   - Edit [quartz.config.ts](quartz.config.ts) for site settings
+   - Edit [quartz.layout.ts](quartz.layout.ts) for layout
+   - Custom styles in `quartz/styles/custom.scss`
+
+3. **Test locally:**
+   - Build and serve to verify changes
+   - Check browser console for errors
+
+4. **Document:**
+   - Update this file if it's a pattern to repeat
+   - Add to Recent Updates section
+
+### For Retrospectives
+
+1. **Use the guide:**
+   - Follow [.claude/RETROSPECTIVE-PROCESS.md](.claude/RETROSPECTIVE-PROCESS.md)
+
+2. **Create retrospective:**
+   - Copy template to `.claude/retrospectives/YYYY-MM-DD-topic.md`
+   - Fill out all sections
+
+3. **Update documentation:**
+   - Add key learnings to this file
+   - Update relevant skills if patterns changed
 
 ---
 
@@ -281,12 +442,8 @@ date: 2026-01-02
 - Deployed automatically via GitHub Actions
 - Content-first approach, minimal customization
 
-**Installed Skills:**
-- [.claude/skills/content-manager/](.claude/skills/content-manager/) - Content management skill for Quartz digital garden
-  - Enforces frontmatter standards, tagging taxonomy, linking patterns
-  - Provides templates for Evergreen notes, Blog posts, Projects, Profile
-  - Implements draft/publish workflow and quality checks
-  - See [SKILL.md](.claude/skills/content-manager/SKILL.md) for full documentation
+**Active Skills:**
+- **content-manager** - See "Skills System" section above for details
 
 ---
 
