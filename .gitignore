@@ -12,3 +12,6 @@ replit.nix
 
 # Local Netlify folder
 .netlify
+
+# Claude Code - Keep claude.md and .claude/ tracked in git
+# These files document the project for AI assistance
