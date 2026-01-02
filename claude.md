@@ -281,6 +281,13 @@ date: 2026-01-02
 - Deployed automatically via GitHub Actions
 - Content-first approach, minimal customization
 
+**Installed Skills:**
+- [.claude/skills/content-manager/](.claude/skills/content-manager/) - Content management skill for Quartz digital garden
+  - Enforces frontmatter standards, tagging taxonomy, linking patterns
+  - Provides templates for Evergreen notes, Blog posts, Projects, Profile
+  - Implements draft/publish workflow and quality checks
+  - See [SKILL.md](.claude/skills/content-manager/SKILL.md) for full documentation
+
 ---
 
 *Created 2026-01-02 for Claude Code usage*
